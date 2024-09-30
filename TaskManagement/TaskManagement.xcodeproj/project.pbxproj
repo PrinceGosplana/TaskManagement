@@ -14,6 +14,7 @@
 		8A0C963B2CAA8D79007E1EAE /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0C963A2CAA8D79007E1EAE /* Task.swift */; };
 		8A0C963D2CAA99C0007E1EAE /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0C963C2CAA99C0007E1EAE /* View+Extension.swift */; };
 		8A0C963F2CAA99CD007E1EAE /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0C963E2CAA99CD007E1EAE /* Date+Extension.swift */; };
+		8A0C96422CAA9D63007E1EAE /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0C96412CAA9D63007E1EAE /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		8A0C963A2CAA8D79007E1EAE /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		8A0C963C2CAA99C0007E1EAE /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		8A0C963E2CAA99CD007E1EAE /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		8A0C96412CAA9D63007E1EAE /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 		8A0C96292CAA8A6E007E1EAE /* TaskManagement */ = {
 			isa = PBXGroup;
 			children = (
+				8A0C96402CAA9D58007E1EAE /* View */,
 				8A0C96392CAA8D0B007E1EAE /* Model */,
 				8A0C96382CAA8B80007E1EAE /* Helpers */,
 				8A0C962A2CAA8A6E007E1EAE /* TaskManagementApp.swift */,
@@ -90,6 +93,14 @@
 				8A0C963A2CAA8D79007E1EAE /* Task.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8A0C96402CAA9D58007E1EAE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8A0C96412CAA9D63007E1EAE /* Home.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +177,7 @@
 				8A0C962D2CAA8A6E007E1EAE /* ContentView.swift in Sources */,
 				8A0C963B2CAA8D79007E1EAE /* Task.swift in Sources */,
 				8A0C963D2CAA99C0007E1EAE /* View+Extension.swift in Sources */,
+				8A0C96422CAA9D63007E1EAE /* Home.swift in Sources */,
 				8A0C962B2CAA8A6E007E1EAE /* TaskManagementApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
