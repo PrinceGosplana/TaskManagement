@@ -8,18 +8,41 @@
 import SwiftUI
 
 struct Home: View {
-    
+
+    @State private var createNewTask: Bool = false
     @State private var createWeek: Bool = false
     @State private var currentDate: Date = .init()
     @State private var currentWeekIndex: Int = 1
     @State private var weekSlider: [[Date.WeekDay]] = []
     @Namespace private var animation
+    @State private var tasks: [Task] = Task.mock.sorted(by: { $1.creatingDate > $0.creatingDate })
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HeaderView()
+
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack {
+                    TasksView()
+                }
+                .hSpacing(.center)
+                .vSpacing(.center)
+            }
+            .scrollIndicators(.hidden)
         }
         .vSpacing(.top)
+        .overlay(alignment: .bottomTrailing) {
+            Button {
+                createNewTask.toggle()
+            } label: {
+                Image(systemName: "plus")
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.white)
+                    .frame(width: 55, height: 55)
+                    .background(Color.darkBlue!.shadow(.drop(color: .black.opacity(0.25), radius: 5, x: 10, y: 10)) , in: .circle)
+            }
+            .padding(15)
+        }
         .onAppear {
             if weekSlider.isEmpty {
                 let currentWeek = Date().fetchWeek()
@@ -35,6 +58,9 @@ struct Home: View {
                 }
             }
         }
+        .sheet(isPresented: $createNewTask, content: {
+            
+        })
     }
 
     @ViewBuilder
@@ -151,6 +177,25 @@ struct Home: View {
         }
     }
 
+    @ViewBuilder
+    func TasksView() -> some View {
+        VStack(alignment: .leading, spacing: 35) {
+            ForEach($tasks) { $task in
+                TaskRowView(task: $task)
+                    .background(alignment: .leading) {
+                        if tasks.last?.id != task.id {
+                            Rectangle()
+                                .frame(width: 1)
+                                .offset(x: 8)
+                                .padding(.bottom, -35)
+                        }
+                    }
+            }
+        }
+        .padding([.vertical, .leading], 15)
+        .padding(.top, 15)
+    }
+    
     private func paginateWeek() {
         if weekSlider.indices.contains(currentWeekIndex) {
             if let firstDate = weekSlider[currentWeekIndex].first?.date, currentWeekIndex == 0 {

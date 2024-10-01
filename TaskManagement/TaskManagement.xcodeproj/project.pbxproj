@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A06634C2CAC0F8C00937F63 /* OffsetKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A06634B2CAC0F8C00937F63 /* OffsetKey.swift */; };
+		8A06634E2CAC16D300937F63 /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A06634D2CAC16D300937F63 /* TaskRowView.swift */; };
 		8A0C962B2CAA8A6E007E1EAE /* TaskManagementApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0C962A2CAA8A6E007E1EAE /* TaskManagementApp.swift */; };
 		8A0C962D2CAA8A6E007E1EAE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0C962C2CAA8A6E007E1EAE /* ContentView.swift */; };
 		8A0C962F2CAA8A70007E1EAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A0C962E2CAA8A70007E1EAE /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		8A06634B2CAC0F8C00937F63 /* OffsetKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetKey.swift; sourceTree = "<group>"; };
+		8A06634D2CAC16D300937F63 /* TaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
 		8A0C96272CAA8A6E007E1EAE /* TaskManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A0C962A2CAA8A6E007E1EAE /* TaskManagementApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagementApp.swift; sourceTree = "<group>"; };
 		8A0C962C2CAA8A6E007E1EAE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				8A0C96412CAA9D63007E1EAE /* Home.swift */,
+				8A06634D2CAC16D300937F63 /* TaskRowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			files = (
 				8A0C963F2CAA99CD007E1EAE /* Date+Extension.swift in Sources */,
 				8A0C962D2CAA8A6E007E1EAE /* ContentView.swift in Sources */,
+				8A06634E2CAC16D300937F63 /* TaskRowView.swift in Sources */,
 				8A0C963B2CAA8D79007E1EAE /* Task.swift in Sources */,
 				8A06634C2CAC0F8C00937F63 /* OffsetKey.swift in Sources */,
 				8A0C963D2CAA99C0007E1EAE /* View+Extension.swift in Sources */,
