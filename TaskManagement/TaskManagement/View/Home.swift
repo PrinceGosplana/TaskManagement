@@ -10,7 +10,7 @@ import SwiftUI
 struct Home: View {
     
     @State private var currentDate: Date = .init()
-    @State private var currentWeekIndex: Int = 0
+    @State private var currentWeekIndex: Int = 1
     @State private var weekSlider: [[Date.WeekDay]] = []
     @Namespace private var animation
 
@@ -22,7 +22,16 @@ struct Home: View {
         .onAppear {
             if weekSlider.isEmpty {
                 let currentWeek = Date().fetchWeek()
+
+                if let firstDate = currentWeek.first?.date {
+                    weekSlider.append(firstDate.createPreviousWeek())
+                }
+                
                 weekSlider.append(currentWeek)
+
+                if let lastDate = currentWeek.last?.date {
+                    weekSlider.append(lastDate.createNextWeek())
+                }
             }
         }
     }
@@ -49,9 +58,11 @@ struct Home: View {
                 ForEach(weekSlider.indices, id: \.self) { index in
                     let week = weekSlider[index]
                     WeekView(week)
+                        .padding(.horizontal, 15)
                         .tag(index)
                 }
             }
+            .padding(.horizontal, -15)
             .tabViewStyle(.page(indexDisplayMode: .never))
             .frame(height: 90)
         }
