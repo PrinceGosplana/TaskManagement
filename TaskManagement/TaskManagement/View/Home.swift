@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Home: View {
     
+    @State private var createWeek: Bool = false
     @State private var currentDate: Date = .init()
     @State private var currentWeekIndex: Int = 1
     @State private var weekSlider: [[Date.WeekDay]] = []
@@ -80,6 +81,12 @@ struct Home: View {
         }
         .padding(15)
         .background(.white)
+        .onChange(of: currentWeekIndex) { oldValue, newValue in
+            /// Creating when it reaches first/last page
+            if newValue == 0 || newValue == (weekSlider.count - 1) {
+                createWeek = true
+            }
+        }
     }
 
     @ViewBuilder
@@ -124,6 +131,39 @@ struct Home: View {
                         currentDate = day.date
                     }
                 }
+            }
+        }
+        .background {
+            GeometryReader {
+                let minX = $0.frame(in: .global).minX
+
+                Color.clear
+                    .preference(key: OffsetKey.self, value: minX)
+                    .onPreferenceChange(OffsetKey.self) { value in
+
+                        /// when the offset reaches 15 and if the createWeek is toggled then generating next set of week
+                        if value.rounded() == 15 && createWeek {
+                            paginateWeek()
+                            createWeek = false
+                        }
+                    }
+            }
+        }
+    }
+
+    private func paginateWeek() {
+        if weekSlider.indices.contains(currentWeekIndex) {
+            if let firstDate = weekSlider[currentWeekIndex].first?.date, currentWeekIndex == 0 {
+                /// Inserting new week at 0th index and removing last array item
+                weekSlider.insert(firstDate.createPreviousWeek(), at: 0)
+                weekSlider.removeLast()
+                currentWeekIndex = 1
+            }
+
+            if let lastDate = weekSlider[currentWeekIndex].last?.date, currentWeekIndex == (weekSlider.count - 1) {
+                weekSlider.append(lastDate.createNextWeek())
+                weekSlider.removeFirst()
+                currentWeekIndex = weekSlider.count - 2
             }
         }
     }
