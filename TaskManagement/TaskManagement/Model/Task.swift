@@ -6,24 +6,34 @@
 //
 
 import SwiftUI
+import SwiftData
 
-struct Task: Identifiable {
-    let id: UUID = .init()
-    let taskTitle: String
-    var creatingDate: Date = .init()
-    var isCompleted: Bool = false
-    let tint: Color
-}
+@Model
+class Task: Identifiable {
+    var id: UUID
+    var taskTitle: String
+    var creatingDate: Date
+    var isCompleted: Bool
+    var tint: String
 
-extension Task {
-    static var mock: [Task] = [
-        .init(taskTitle: "Record Video", creatingDate: .updateHour(-5), isCompleted: true, tint: Color.taskColor1 ?? .clear),
-        .init(taskTitle: "Redesign Website", creatingDate: .updateHour(-3), tint: Color.taskColor2 ?? .clear),
-        .init(taskTitle: "Go for a walk", creatingDate: .updateHour(-4), tint: Color.taskColor3 ?? .clear),
-        .init(taskTitle: "Edit video", creatingDate: .updateHour(0), isCompleted: true, tint: Color.taskColor4 ?? .clear),
-        .init(taskTitle: "Publish video", creatingDate: .updateHour(2), isCompleted: true, tint: Color.taskColor5 ?? .clear),
-        .init(taskTitle: "Tweet about new video", creatingDate: .updateHour(1), tint: Color.taskColor1 ?? .clear)
-    ]
+    init(id: UUID = .init(), taskTitle: String, creatingDate: Date = .init(), isCompleted: Bool = false, tint: String) {
+        self.id = id
+        self.taskTitle = taskTitle
+        self.creatingDate = creatingDate
+        self.isCompleted = isCompleted
+        self.tint = tint
+    }
+
+    var tintColor: Color {
+        switch tint {
+        case "TaskColor1": Color.taskColor1 ?? .black
+        case "TaskColor2": Color.taskColor2 ?? .black
+        case "TaskColor3": Color.taskColor3 ?? .black
+        case "TaskColor4": Color.taskColor4 ?? .black
+        case "TaskColor5": Color.taskColor5 ?? .black
+        default: .black
+        }
+    }
 }
 
 extension Date {

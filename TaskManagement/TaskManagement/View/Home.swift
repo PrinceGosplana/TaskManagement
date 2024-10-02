@@ -15,7 +15,6 @@ struct Home: View {
     @State private var currentWeekIndex: Int = 1
     @State private var weekSlider: [[Date.WeekDay]] = []
     @Namespace private var animation
-    @State private var tasks: [Task] = Task.mock.sorted(by: { $1.creatingDate > $0.creatingDate })
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -183,21 +182,7 @@ struct Home: View {
 
     @ViewBuilder
     func TasksView() -> some View {
-        VStack(alignment: .leading, spacing: 35) {
-            ForEach($tasks) { $task in
-                TaskRowView(task: $task)
-                    .background(alignment: .leading) {
-                        if tasks.last?.id != task.id {
-                            Rectangle()
-                                .frame(width: 1)
-                                .offset(x: 8)
-                                .padding(.bottom, -35)
-                        }
-                    }
-            }
-        }
-        .padding([.vertical, .leading], 15)
-        .padding(.top, 15)
+        
     }
     
     private func paginateWeek() {
